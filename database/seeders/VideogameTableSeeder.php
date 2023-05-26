@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Character;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
 class VideogameTableSeeder extends Seeder
@@ -13,19 +14,18 @@ class VideogameTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $videoGamesData = [];//da dove li prendiamo?
 
-        foreach($videoGamesData as $game) {
+        for($i = 0; $i < 10; $i++) {
             $newCharacter = new Character();
 
-            $newCharacter->name= $game['name'];
-            $newCharacter->description= $game['description'];
-            $newCharacter->attack= $game['attack'];
-            $newCharacter->defence= $game['defence'];
-            $newCharacter->speed= $game['speed'];
-            $newCharacter->life= $game['life'];
+            $newCharacter->name= $faker->name();
+            $newCharacter->description= $faker->paragraph();
+            $newCharacter->attack= $faker->numberBetween(5, 15);
+            $newCharacter->defence= $faker->numberBetween(5, 15);
+            $newCharacter->speed= $faker->numberBetween(5, 15);
+            $newCharacter->life= $faker->numberBetween(5, 15);
 
             $newCharacter->save();
         }
