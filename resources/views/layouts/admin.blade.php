@@ -21,7 +21,11 @@
 
 <body>
     <div id="app">
+        <header>
+            <a href="">Home</a>
+            <a href="{{ route('admin.characters.index') }}">Characters</a>
 
+        </header>
         <main class="">
             @yield('content')
         </main>

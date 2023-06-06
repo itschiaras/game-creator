@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Character;
+use App\Http\Requests\StoreCharacterRequest;
+use App\Http\Requests\UpdateCharacterRequest;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller
@@ -14,7 +17,8 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        
+        $characters = Character::all();
+        return view('admin.characters.index', compact('characters'));
     }
 
     /**
@@ -24,18 +28,20 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.characters.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
-    public function store(Request $request)
+    public function store(StoreCharacterRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        $newCharacter = Character::create($form_data);
+        return redirect()->route('admin.characters.show', $newCharacter->id);
     }
 
     /**
@@ -44,9 +50,9 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Character $character)
     {
-        //
+        return view('admin.characters.show', compact('character'));
     }
 
     /**
@@ -55,9 +61,9 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Character $character)
     {
-        //
+        return view('admin.characters.edit', compact('character'));
     }
 
     /**
@@ -67,9 +73,12 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCharacterRequest $request, Character $character)
     {
-        //
+        $edit_form_data = $request->all();
+        $character->update($edit_form_data);
+
+        return redirect()->route('admin.characters.show', $character->id);
     }
 
     /**
@@ -78,8 +87,9 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Character $character)
     {
-        //
+        $character->delete();
+        return redirect()->route('admin.characters.index');
     }
 }
