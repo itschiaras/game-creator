@@ -7,7 +7,7 @@ use App\Models\Character;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
-class VideogameTableSeeder extends Seeder
+class CharacterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
