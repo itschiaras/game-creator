@@ -9,6 +9,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$character->name}}</h5>
       <p class="card-text">{{$character->description}}</p>
+      <p class="card-text">{{$character->type->name}}</p>
     </div>
     <div class="card-body">
       <a href="{{ route('admin.characters.show', $character->id) }}" class="btn btn-success text-white">Qui il link per la show</a>

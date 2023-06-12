@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCharacterRequest extends FormRequest
 {
@@ -24,12 +25,17 @@ class UpdateCharacterRequest extends FormRequest
     public function rules()
     {
         return [
-        'name'=>'required',
+        'name'=>[
+            'required',
+            Rule::unique('characters')->ignore($this->character),
+        ],
         'description' => 'nullable',
         'attack'=>'required|integer',
         'defence'=>'required|integer',
         'speed'=>'required|integer',
         'life'=>'required|integer',
+        'type_id' => 'nullable|exists:types,id',
+        'items' => 'nullable|exists:items,id'
     ];
     }
     public function messages()

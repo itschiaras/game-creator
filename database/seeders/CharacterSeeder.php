@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Character;
+use App\Models\Type;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +18,8 @@ class CharacterSeeder extends Seeder
     public function run(Faker $faker)
     {
 
+
+
         for($i = 0; $i < 10; $i++) {
             $newCharacter = new Character();
 
@@ -26,7 +29,7 @@ class CharacterSeeder extends Seeder
             $newCharacter->defence= $faker->numberBetween(5, 15);
             $newCharacter->speed= $faker->numberBetween(5, 15);
             $newCharacter->life= $faker->numberBetween(5, 15);
-
+            $newCharacter->type_id = Type::all()->random()->id;
             $newCharacter->save();
         }
     }

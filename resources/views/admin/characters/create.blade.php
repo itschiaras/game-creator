@@ -46,6 +46,31 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <div class=" mb-3">
+            <label for="type_id">type</label>
+            <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
+                <option value="">Seleziona categoria</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col form-group ">
+            <p>Seleziona i Tag:</p>
+            @foreach ($items as $item)
+                <div>
+                    <input type="checkbox" name="items[]" value="{{ $item->id }}" class="form-check-input"
+                        {{ in_array($item->id, old('items', [])) ? 'checked' : '' }}>
+                    <label for="" class="form-check-label">{{ $item->name }}</label>
+                </div>
+            @endforeach
+            @error('items')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
         <button type="submit" class="btn btn-success">Save</button>
         <button type="reset" class="btn btn-primary">Reset</button>
     </form>
