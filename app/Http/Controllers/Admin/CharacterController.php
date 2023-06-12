@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Item;
+use App\Models\Type;
 use App\Models\Character;
 use App\Http\Requests\StoreCharacterRequest;
 use App\Http\Requests\UpdateCharacterRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller
@@ -28,7 +31,10 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        return view('admin.characters.create');
+
+        $types = Type::all();
+        $items = Item::all();
+        return view('admin.characters.create', compact('types', 'items'));
     }
 
     /**
@@ -40,7 +46,12 @@ class CharacterController extends Controller
     public function store(StoreCharacterRequest $request)
     {
         $form_data = $request->validated();
-        $newCharacter = Character::create($form_data);
+        $form_data['user_id'] = Auth::id();
+         $newCharacter = Character::create($form_data);
+
+        if ($request->has('items')) {
+            $newCharacter->items()->attach($request->items);
+        }
         return redirect()->route('admin.characters.show', $newCharacter->id);
     }
 
@@ -52,6 +63,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
+
         return view('admin.characters.show', compact('character'));
     }
 
@@ -63,7 +75,10 @@ class CharacterController extends Controller
      */
     public function edit(Character $character)
     {
-        return view('admin.characters.edit', compact('character'));
+
+        $types = Type::all();
+        $items = Item::all();
+        return view('admin.characters.edit', compact('types', 'items','character'));
     }
 
     /**
@@ -75,10 +90,16 @@ class CharacterController extends Controller
      */
     public function update(UpdateCharacterRequest $request, Character $character)
     {
-        $edit_form_data = $request->all();
-        $character->update($edit_form_data);
+        $data = $request->validated();
+        $character->update($data);
 
-        return redirect()->route('admin.characters.show', $character->id);
+        if ($request->has('items')) {
+            $character->items()->sync($request->items);
+        } else {
+            $character->items()->sync([]);
+        }
+
+        return redirect()->route('admin.characters.show', $character->id)->with('message', 'Il post è stato aggiornato');
     }
 
     /**
@@ -90,6 +111,6 @@ class CharacterController extends Controller
     public function destroy(Character $character)
     {
         $character->delete();
-        return redirect()->route('admin.characters.index');
+        return redirect()->route('admin.characters.index')->with('message', "$character->name deleted successfully.");;
     }
 }

@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Character extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'attack', 'defence', 'speed', 'life'];
+    protected $fillable = ['name', 'description', 'attack', 'defence', 'speed', 'life', 'type_id'];
+
+
+    public function type () {
+
+        return $this->belongsTo(Type::class);
+    }
+
+    public function items () {
+
+        return $this->belongsToMany(Item::class, 'character_item')->withPivot('qty');
+    }
 }

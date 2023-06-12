@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CharacterController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('characters', CharacterController::class);
+    Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
+    Route::resource('items', ItemController::class)->parameters(['items' => 'item:slug']);
 });
 
 require __DIR__.'/auth.php';

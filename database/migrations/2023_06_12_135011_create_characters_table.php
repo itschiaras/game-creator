@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('defence')->nullable(false);
             $table->integer('speed')->nullable(false);
             $table->integer('life')->nullable(false);
+            $table->unsignedBigInteger('type_id')->nullable(false);
+            $table->foreign('type_id')->references('id')->on('types');
             $table->timestamps();
         });
     }
