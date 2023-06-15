@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <section class="container">
+    <section class="container mt-5">
         <h5 class="card-title">{{ $character->name }}</h5>
         @if ($character->description)
             <p class="card-text">{!! $character->description !!}</p>
