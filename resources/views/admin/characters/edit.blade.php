@@ -16,7 +16,7 @@
         <div class="mb-3">
             <label for="attack">attack</label>
             <input type="number" class="form-control @error('attack') is-invalid @enderror" name="attack" id="attack"
-                 value="{{ old('attack', $character->attack) }}">
+                value="{{ old('attack', $character->attack) }}">
             @error('attack')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -24,7 +24,7 @@
         <div class="mb-3">
             <label for="defence">defence</label>
             <input type="number" class="form-control @error('defence') is-invalid @enderror" name="defence" id="defence"
-                 value="{{ old('defence', $character->defence) }}">
+                value="{{ old('defence', $character->defence) }}">
             @error('defence')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -32,7 +32,7 @@
         <div class="mb-3">
             <label for="speed">speed</label>
             <input type="number" class="form-control @error('speed') is-invalid @enderror" name="speed" id="speed"
-                 value="{{ old('speed', $character->speed) }}">
+                value="{{ old('speed', $character->speed) }}">
             @error('speed')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -40,7 +40,7 @@
         <div class="mb-3">
             <label for="life">life</label>
             <input type="number" class="form-control @error('life') is-invalid @enderror" name="life" id="life"
-                 value="{{ old('life', $character->life) }}">
+                value="{{ old('life', $character->life) }}">
             @error('life')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -63,27 +63,28 @@
         <div class="col form-group ">
             <p>Seleziona i Tag:</p>
 
-                    @foreach ($items as $item)
-                        <div>
-                            @if ($errors->any())
-                                <input type="checkbox" name="items[]" value="{{ $item->id }}" class="form-check-input"
-                                    {{ in_array($item->id, old('items', [])) ? 'checked' : '' }}>
-                            @else
-                                <input type="checkbox" name="items[]" value="{{ $item->id }}" class="form-check-input"
-                                    {{ $character->items->contains($item) ? 'checked' : '' }}>
-                            @endif
-                            <label for="" class="form-check-label">{{ $item->name }}</label>
-                        </div>
-                    @endforeach
-                    @error('items')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+            @foreach ($items as $item)
+                <div>
+                    @if ($errors->any())
+                        <input type="checkbox" name="items[]" value="{{ $item->id }}" class="form-check-input"
+                            {{ in_array($item->id, old('items', [])) ? 'checked' : '' }}>
+                    @else
+                        <input type="checkbox" name="items[]" value="{{ $item->id }}" class="form-check-input"
+                            {{ $character->items->contains($item) ? 'checked' : '' }}>
+                    @endif
+                    <label for="" class="form-check-label">{{ $item->name }}</label>
+                </div>
+            @endforeach
+            @error('items')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 
 
         </div>
         <div class="mb-3">
             <label for="description">description</label>
-            <textarea name="description" id="description" rows="10" class="form-control @error('description') is-invalid @enderror">{{ old('description', $character->decription) }}</textarea>
+            <textarea name="description" id="description" rows="10"
+                class="form-control @error('description') is-invalid @enderror">{{ old('description', $character->description) }}</textarea>
             @error('description')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror

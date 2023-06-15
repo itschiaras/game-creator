@@ -20,15 +20,15 @@ class CharacterSeeder extends Seeder
 
 
 
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $newCharacter = new Character();
 
-            $newCharacter->name= $faker->name();
-            $newCharacter->description= $faker->paragraph();
-            $newCharacter->attack= $faker->numberBetween(5, 15);
-            $newCharacter->defence= $faker->numberBetween(5, 15);
-            $newCharacter->speed= $faker->numberBetween(5, 15);
-            $newCharacter->life= $faker->numberBetween(5, 15);
+            $newCharacter->name = $faker->name();
+            $newCharacter->description = $faker->paragraph();
+            $newCharacter->attack = $faker->numberBetween(5, 15);
+            $newCharacter->defence = $faker->numberBetween(5, 15);
+            $newCharacter->speed = $faker->numberBetween(5, 15);
+            $newCharacter->life = $faker->numberBetween(5, 15);
             $newCharacter->type_id = Type::all()->random()->id;
             $newCharacter->save();
         }
