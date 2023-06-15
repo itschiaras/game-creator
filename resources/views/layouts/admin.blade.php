@@ -21,14 +21,8 @@
 
 <body>
     <div id="app">
-        <header>
-            <a href="">Home</a>
-            <a href="{{ route('admin.characters.index') }}">Characters</a>
-            <a href="{{ route('admin.types.index') }}">Types</a>
-            <a href="{{ route('admin.items.index') }}">Items</a>
+        @include('partials.header')
 
-
-        </header>
         <main class="">
             @yield('content')
         </main>
