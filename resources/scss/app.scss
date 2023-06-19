@@ -8,3 +8,18 @@ $fa-font-path: "../fonts/webfonts" !default;
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
 @import "~bootstrap/scss/bootstrap";
+
+#home-page {
+    margin-top: 50px;
+    h1 {
+        margin: 0 auto;
+        font-size: 200px;
+        color: rgb(220, 215, 215);
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 200px;
+        color: rgb(220, 215, 215);
+    }
+}

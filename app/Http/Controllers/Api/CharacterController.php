@@ -21,7 +21,7 @@ class CharacterController extends Controller
     public function show($id)
     {
         $character = Character::with('type', 'items')->where('id', $id)->first();
-         dd($character);
+
         if ($character) {
             return response()->json([
                 'status' => 'success',
@@ -34,7 +34,5 @@ class CharacterController extends Controller
                 'results' => 'Product not found !'
             ], 404);
         }
-
-
     }
 }

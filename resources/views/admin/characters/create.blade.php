@@ -86,3 +86,127 @@
         </script>
     </div>
 @endsection
+
+
+
+{{-- <template>
+    <div class="container">
+        <div class="card-container">
+
+            <div class="card-background">
+
+                <div class="card-frame">
+
+                    <div class="frame-header">
+                        <h1 class="name">Oath of Nissa</h1>
+                        <!-- here goes the mana icon -->
+                    </div>
+
+                    <!-- Here goes the illustration -->
+
+                    <div class="frame-type-line">
+                        <h1 class="type">Legendary Enchantment</h1>
+                        <!-- Here goes the set icon -->
+                    </div>
+
+                    <div class="frame-text-box">
+
+                        <p class="description ftb-inner-margin">When Oath of Nissa enters the battlefield, look at the top
+                            three cards of your library. You may reveal a creature, land, or planeswalker card from among
+                            them and put it into your hand. Put the rest on the bottom of your library in any order. </p>
+
+                        <p class="description">You may spend mana as though it were mana of any color to cast planeswalker
+                            spells.</p>
+
+                        <p class="flavour-text">"For the life of every plane, I will keep watch."</p>
+
+                    </div>
+
+                    <div class="frame-bottom-info inner-margin">
+                        <div class="fbi-left">
+                            <p>140/184 R</p>
+                            <p>OGW &#x2022; EN <!-- paintbrush symbol --> Wesley Burt</p>
+                        </div>
+
+                        <div class="fbi-center"></div>
+
+                        <div class="fbi-right">
+                            &#x99; &amp; &#169; 2016 Wizards of the Coast
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'SingleCharacter'
+}
+</script>
+
+<style lang="scss" scoped>
+.card-container {
+    border: 1px solid black;
+    width: 500px;
+    height: 700px;
+    margin: 0 auto;
+    /* margin-top: 56px; */
+    border-radius: 25px;
+    box-sizing: border-box;
+    box-shadow: -8px 9px 16px -3px gray;
+
+    /*background: #171314; */
+    .card-background {
+        height: 600px;
+        margin: 20px 20px 0 20px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom-left-radius: 8%;
+        border-bottom-right-radius: 8%;
+        background-color: #bbb;
+
+        .card-frame {
+            z-index: 1;
+            position: relative;
+            height: 108%;
+            max-width: 97%;
+            left: 1%;
+            top: 0.5%;
+            left: 1.2%;
+            display: flex;
+            flex-direction: column;
+
+            .frame-header,
+            .frame-type-line {
+                border-bottom: 4px solid #a9a9a9;
+                border-left: 2px solid #a9a9a9;
+                border-top: 1px solid #fff;
+                border-right: 1px solid #fff;
+            }
+
+            .frame-header,
+            .frame-art,
+            .frame-type-line {
+                box-shadow:
+                    0 0 0 2px #171314,
+                    0 0 0 5px #26714A,
+                    -3px 3px 2px 5px #171314;
+                margin-bottom: 7px;
+            }
+
+            .frame-text-box {
+                box-shadow:
+                    0 0 0 5px #26714A,
+                    -3px 3px 2px 5px #171314;
+            }
+        }
+    }
+
+}
+</style> --}}
