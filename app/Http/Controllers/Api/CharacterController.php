@@ -21,7 +21,6 @@ class CharacterController extends Controller
     public function show($id)
     {
         $character = Character::with('type', 'items')->where('id', $id)->first();
-
         if ($character) {
             return response()->json([
                 'status' => 'success',
